@@ -1,5 +1,5 @@
 const requestAnimationFrame = window.requestAnimationFrame || (fn => window.setTimeout(fn, 16))
-export default VueScrollHook = {
+const VueScrollHookMixin = {
   mounted () {
     // Register onScroll event
     if (!this.$options.onScroll) return
@@ -15,3 +15,9 @@ export default VueScrollHook = {
     }
   }
 }
+const VueScrollHook = {
+  install (app) {
+    app.mixin(VueScrollHookMixin)
+  }
+}
+export default VueScrollHook
