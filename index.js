@@ -8,7 +8,7 @@ const VueScrollHookMixin = {
       window.addEventListener('scroll', this.$options.onScroll)
     })
   },
-  destroyed () {
+  unmounted () {
     // Unregister onScroll event
     if (this.$options.onScroll) {
       window.removeEventListener('scroll', this.$options.onScroll)
@@ -17,6 +17,10 @@ const VueScrollHookMixin = {
 }
 const VueScrollHook = {
   install (app) {
+    if (!app.version.startsWith('3')) {
+      VueScrollHookMixin.destroyed = VueScrollHookMixin.unmounted
+      delete VueScrollHookMixin.unmounted
+    }
     app.mixin(VueScrollHookMixin)
   }
 }
