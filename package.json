@@ -1,6 +1,6 @@
 {
   "name": "vue-scroll-hook",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "A Vue plugin that makes a custom hook on scrolling",
   "main": "index.js",
   "repository": "https://github.com/laineus/vue-scroll-hook",
